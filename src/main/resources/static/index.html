@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Test Results Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { cursor: pointer; user-select: none; background:#f4f4f4; }
+        .controls { margin-bottom: 10px; }
+        .chart-container { width: 100%; height: 400px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<h1>Test Results Viewer</h1>
+
+<div class="controls">
+    <label>Project Name: <input id="projectName" value="uk"/></label>
+    <label>Test Env: <input id="testEnv" value="qa"/></label>
+    <label>TestType Prefix: <input id="testType" value="base"/></label>
+    <button id="search">Search</button>
+    <label style="margin-left:20px;">Limit: <input id="limit" type="number" value="100" style="width:80px" /></label>
+</div>
+
+<div id="status"></div>
+
+<table id="resultsTable">
+    <thead>
+    <tr>
+        <th data-field="testResultId">ID</th>
+        <th data-field="testDateTime">DateTime</th>
+        <th data-field="errorRate">Error Rate</th>
+        <th data-field="averageResponseTime">Avg Resp Time</th>
+        <th data-field="throughput">Throughput</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<div class="chart-container">
+    <canvas id="trendChart"></canvas>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
